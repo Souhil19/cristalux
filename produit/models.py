@@ -25,7 +25,9 @@ class Product(models.Model):
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
+    discount =models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
     image = models.ImageField(upload_to='uploads/', blank=True, null=True)
+    image2 = models.ImageField(upload_to='uploads/', blank=True, null=True)
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True)
     date_added = models.DateTimeField(auto_now_add=True)
 
@@ -41,6 +43,11 @@ class Product(models.Model):
     def get_image(self):
         if self.image:
             return 'http://127.0.0.1:8000' + self.image.url
+        return ''
+
+    def get_image2(self):
+        if self.image2:
+            return 'http://127.0.0.1:8000' + self.image2.url
         return ''
 
     def get_thumbnail(self):

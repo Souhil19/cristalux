@@ -11,7 +11,9 @@ class ProductSerializer(serializers.ModelSerializer):
             "get_absolute_url",
             "description",
             "price",
+            "discount",
             "get_image",
+            "get_image2",
             "get_thumbnail"
         )
 
@@ -25,4 +27,15 @@ class CategorySerializer(serializers.ModelSerializer):
             "name",
             "get_absolute_url",
             "products",
+        )
+
+
+class CategoryItemSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Category
+        fields = (
+            "id",
+            "name",
+            "get_absolute_url",
         )

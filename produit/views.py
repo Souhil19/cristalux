@@ -10,12 +10,13 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
+from .serializers import ProductSerializer, CategorySerializer, CategoryItemSerializer
+
 
 class StandardResultsSetPagination(PageNumberPagination):
-    page_size = 5
+    page_size = 6
     page_size_query_param = 'page_size'
-    max_page_size = 5
+    max_page_size = 6
 
 class ProductsList(generics.ListCreateAPIView):
     queryset = Product.objects.all()
@@ -40,6 +41,10 @@ class ProductDetail(APIView):
         product = self.get_object(category_slug, product_slug)
         serializer = ProductSerializer(product)
         return Response(serializer.data)
+
+class CategoryListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategoryItemSerializer
 
 
 class CategoryDetail(APIView):

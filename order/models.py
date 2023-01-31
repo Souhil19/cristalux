@@ -27,6 +27,7 @@ class OrderItem(models.Model):
     price = models.DecimalField(max_digits=8, decimal_places=2)
     quantity = models.IntegerField(default=1)
     product_name=models.CharField(max_length=100, default="")
+    #discount = models.DecimalField(max_digits=6, decimal_places=2, default=0.00)
 
     def __str__(self):
         return '%s' % self.id

@@ -44,12 +44,12 @@ INSTALLED_APPS = [
     'produit',
     'order'
 ]
-
+"""
 REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 6
 }
-
+"""
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
 ]

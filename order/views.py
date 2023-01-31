@@ -35,3 +35,8 @@ class OrderCreate(APIView):
 class Order(generics.ListCreateAPIView):
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
+
+    def perform_create(self, serializer):
+        paid_amount = sum(
+            item.get('quantity') * item.get('product').price *( 1 - item.get('product').discount) for item in serializer.validated_data['items'])
+        serializer.save( paid_amount=paid_amount)
