@@ -39,4 +39,6 @@ class Order(generics.ListCreateAPIView):
     def perform_create(self, serializer):
         paid_amount = sum(
             item.get('quantity') * item.get('product').price *( 1 - item.get('product').discount) for item in serializer.validated_data['items'])
+        tarif_livraison = serializer.validated_data['tarif_livraison']
+        paid_amount= paid_amount + tarif_livraison
         serializer.save( paid_amount=paid_amount)

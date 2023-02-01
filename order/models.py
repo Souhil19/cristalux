@@ -10,6 +10,7 @@ class Order(models.Model):
     nom = models.CharField(max_length=100)
     address = models.CharField(max_length=100)
     wilaya = models.CharField(max_length=100)
+    tarif_livraison= models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     phone = models.CharField(max_length=100)
     created_at = models.DateTimeField(auto_now_add=True)
     paid_amount = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)

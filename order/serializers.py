@@ -27,6 +27,7 @@ class OrderSerializer(serializers.ModelSerializer):
             "nom",
             "address",
             "wilaya",
+            "tarif_livraison",
             "phone",
             "items",
         )
